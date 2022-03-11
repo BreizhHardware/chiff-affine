@@ -1,2 +1,1 @@
-Hello
-This project is a school project
+Bonjour, ce projet est un projet fais en cour de NSI, il consiste a prendre un fichier en entrée et a le chiffrer en utilisant le chiffrement affine, puis de pouvoir bien sur le déchiffrer
