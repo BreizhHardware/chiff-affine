@@ -2,7 +2,7 @@ def cryptByteFile(filenameIn: str, keya: int, keyb: int, filenameOut = 'result')
     """ Ecrit dans filenameOut, filenameIn crypté avec le chiffrement affine
     """
     fdin = open(filenameIn, "rb")
-    fdout = open(filenameOut, "ab")
+    fdout = open(filenameOut, "wb")
     data = fdin.read(1)
     while data != b'':
         fdout.write(chiffrementAffineByte(data, keya, keyb))
@@ -44,7 +44,7 @@ def decryptByteFile(filenameIn: str, keya: int, keyb: int, filenameOut = 'result
     """ Ecrit dans filenameOut, filenameIn décrypté avec le chiffrement affine
     """
     fdin = open(filenameIn, "rb")
-    fdout = open(filenameOut, "ab")
+    fdout = open(filenameOut, "wb")
     data = fdin.read(1)
     while data != b'':
         fdout.write(dechiffrementAffineByte(data, keya, keyb))
@@ -56,10 +56,15 @@ def decryptByteFile(filenameIn: str, keya: int, keyb: int, filenameOut = 'result
 
 
 #Jeu de test
+
+
 print(chiffrementAffineByte(b'\xd8', 1, 3))
-#cryptByteFile('tescrypt.txt', 1, 3, "resluttest")
-#cryptByteFile('data', 1, 3)
-#cryptByteFile('monkey.jpg', 1, 3)
+cryptByteFile('tescrypt.txt', 1, 3, "resulttest")
+cryptByteFile('data', 1, 3, 'resultcryptdata')
+cryptByteFile('monkey.jpg', 1, 3)
 print(dechiffrementAffineByte(b'\xd8', 1, 3))
-decryptByteFile('resluttest', 1, 3, "decryptresult")
-#decryptByteFile('result', 1, 3, "decryptmonkey.jpg")
+decryptByteFile('resulttest', 1, 3, "decryptresult")
+decryptByteFile('resultcryptdata', 1, 3, 'resultdecryptdata')
+decryptByteFile('result', 1, 3, "decryptmonkey.jpg")
+
+#Notre problème c'est le 'aw' dans fdout = open(filenameOut, 'ab') en gros au lieu d'écraser ce qu'il y avait avant, ça ajoutais après
