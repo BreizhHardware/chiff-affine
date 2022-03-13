@@ -62,8 +62,6 @@ def decryptByteFile(filenameIn: str, keya: int, keyb: int, filenameOut = 'result
     fdin.close()
     fdout.close()
 
-#bytes([1])
-
 
 #Jeu de test
 
