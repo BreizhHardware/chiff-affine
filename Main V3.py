@@ -1,6 +1,15 @@
+def createFile(filename: str) -> None:
+    """ Créer le fichier si il n'existe pas
+    """
+    try:
+        with open(filename, 'x') as f:
+            f.write('')
+    except FileExistsError:
+        return None
 def cryptByteFile(filenameIn: str, keya: int, keyb: int, filenameOut = 'result') -> None:
     """ Ecrit dans filenameOut, filenameIn crypté avec le chiffrement affine
     """
+    createFile(filenameOut)
     fdin = open(filenameIn, "rb")
     fdout = open(filenameOut, "wb")
     data = fdin.read(1)
@@ -43,6 +52,7 @@ def dechiffrementAffineByte(data: bytes, keya: int, keyb: int) -> bytes:
 def decryptByteFile(filenameIn: str, keya: int, keyb: int, filenameOut = 'result') -> None:
     """ Ecrit dans filenameOut, filenameIn décrypté avec le chiffrement affine
     """
+    createFile(filenameOut)
     fdin = open(filenameIn, "rb")
     fdout = open(filenameOut, "wb")
     data = fdin.read(1)
@@ -58,13 +68,12 @@ def decryptByteFile(filenameIn: str, keya: int, keyb: int, filenameOut = 'result
 #Jeu de test
 
 
-print(chiffrementAffineByte(b'\xd8', 1, 3))
-cryptByteFile('tescrypt.txt', 1, 3, "resulttest")
+cryptByteFile('tescrypt.txt', 1, 3, "resulttest2")
 cryptByteFile('data', 1, 3, 'resultcryptdata')
 cryptByteFile('monkey.jpg', 1, 3)
-print(dechiffrementAffineByte(b'\xd8', 1, 3))
-decryptByteFile('resulttest', 1, 3, "decryptresult")
+decryptByteFile('resulttest2', 1, 3, "decryptresult2")
 decryptByteFile('resultcryptdata', 1, 3, 'resultdecryptdata')
 decryptByteFile('result', 1, 3, "decryptmonkey.jpg")
 
 #Notre problème c'est le 'aw' dans fdout = open(filenameOut, 'ab') en gros au lieu d'écraser ce qu'il y avait avant, ça ajoutais après
+#J'ai crée une fonction qui permet de crée le fichier si il n'exite pas
