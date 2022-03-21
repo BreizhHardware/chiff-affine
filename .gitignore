@@ -9,3 +9,8 @@ monkey.jpg
 motsfreq.py
 testcrypt.txt
 chiffrement.py.old
+*.mp3
+*.exe
+*.mp4
+*.jpg
+*.old
