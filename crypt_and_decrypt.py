@@ -32,6 +32,7 @@ def chiffrementAffineByte(data: bytes, keya: int, keyb: int) -> bytes:
     y = (keya*x+keyb)%256
     return bytes([alphabet[y]])
 
+
 def inverse(a):
     """ Renvoie l'inverse du module de a et x par 256
     """
@@ -39,6 +40,7 @@ def inverse(a):
     while (a*x%256 != 1):
             x += 1
     return x
+
 
 def dechiffrementAffineByte(data: bytes, keya: int, keyb: int) -> bytes:
     """ Renvoie le byte data décrypté avec le chiffrement affine

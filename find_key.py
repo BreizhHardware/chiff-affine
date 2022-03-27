@@ -55,6 +55,7 @@ def findKeywrite(data: bytes, dataout: bytes, filenameOut = 'result'):
                     fdout.write(str(keyb))
                     fdout.write("\n")
 
+
 def findKeyList(data: bytes, dataout: bytes):
     """Renvoie la liste des couples de clé possible pour que data soit égale à dataout.
     """
@@ -68,6 +69,7 @@ def findKeyList(data: bytes, dataout: bytes):
                     L.append(t)
     return L
 
+
 def comparKey(L: list, M: list) -> tuple:
     """Compare les couples de clé valeur et renvoie le couple commun aux 2 listes M et L.
     """
@@ -75,3 +77,4 @@ def comparKey(L: list, M: list) -> tuple:
         for y in range(len(M)):
             if L[i] == M[y]:
                 return L[i]
+                
